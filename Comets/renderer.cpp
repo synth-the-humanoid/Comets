@@ -66,16 +66,22 @@ void Renderer::DrawComet(Comet* comet)
 	renderTarget->CreateSolidColorBrush(D2D1::ColorF(comet->r, comet->g, comet->b, comet->a), &brush);
 	if (brush)
 	{
-		renderTarget->DrawEllipse(D2D1::Ellipse(D2D1::Point2F(comet->x, comet->y), comet->rad, comet->rad), brush, 3);
+		D2D1_ELLIPSE ellipse = D2D1::Ellipse(D2D1::Point2F(comet->x, comet->y), comet->rad, comet->rad);
+		renderTarget->DrawEllipse(ellipse, brush, 3);
+		renderTarget->FillEllipse(ellipse, brush);
 		brush->Release();
 		comet->Advance();
-		if (comet->x >= windowRect.right - windowRect.left)
+		if (comet->x < 0 || comet->x >= windowRect.right - windowRect.left)
 		{
-			comet->x = 0;
+			comet->xVel *= -1;
 		}
-		if (comet->y >= windowRect.bottom - windowRect.top)
+		if (comet->y < 0 || comet->y >= windowRect.bottom - windowRect.top)
 		{
-			comet->y = 0;
+			comet->yVel *= -1;
+		}
+		if (comet->rad >= 100 || comet->rad <=.5)
+		{
+			comet->radVel *= -1;
 		}
 	}
 }

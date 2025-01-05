@@ -23,9 +23,9 @@ Comet::Comet()
 	this->g = (rand() % 101) / 100.0;
 	this->b = (rand() % 101) / 100.0;
 	this->a = (rand() % 101) / 100.0;
-	this->xVel = rand() % 6;
-	this->yVel = rand() % 6;
-	this->radVel = (rand() % 30) / 100.0;
+	this->xVel = (rand() % 5) + 1;
+	this->yVel = (rand() % 5) + 1;
+	this->radVel = (rand() % 10) / 100.0;
 }
 
 void Comet::Advance()

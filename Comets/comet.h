@@ -4,11 +4,10 @@
 
 class Comet
 {
-	private:
+	public:
 		float xVel;
 		float yVel;
 		float radVel;
-	public:
 		float x;
 		float y;
 		float r;

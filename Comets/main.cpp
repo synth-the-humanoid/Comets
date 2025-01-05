@@ -30,6 +30,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
 	ShowWindow(hWnd, nCmdShow);
 	renderer = new Renderer(hWnd);
+	srand(time(NULL));
 	for (int i = 0; i < 1000; i++)
 	{
 		renderer->AddComet(new Comet());
